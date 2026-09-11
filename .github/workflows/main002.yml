@@ -1,0 +1,27 @@
+name: Sequential Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-v1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Building Version 1"
+
+  build-v2:
+    needs: build-v1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Building Version 2"
+
+  build-v3:
+    needs: build-v2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Building Version 3"
