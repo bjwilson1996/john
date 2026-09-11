@@ -1,4 +1,4 @@
-name: Matrix Workflow
+name: Matrix Test
 
 on:
   push:
@@ -9,20 +9,13 @@ jobs:
   test:
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-        version:
-          - v1
-          - v2
-          - v3
+        os: [ubuntu-latest, windows-latest]
+        version: [v1, v2, v3]
 
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run version
+      - name: Show OS and Version
         run: |
-          echo "Running ${{ matrix.version }} on ${{ matrix.os }}"
+          echo "Operating System: ${{ matrix.os }}"
+          echo "Code Version: ${{ matrix.version }}"
