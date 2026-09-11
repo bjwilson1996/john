@@ -1,6 +1,7 @@
 name: Matrix Test
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -15,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: Show OS and Version
+      - name: Test
         run: |
-          echo "Operating System: ${{ matrix.os }}"
-          echo "Code Version: ${{ matrix.version }}"
+          echo "OS: ${{ matrix.os }}"
+          echo "Version: ${{ matrix.version }}"
